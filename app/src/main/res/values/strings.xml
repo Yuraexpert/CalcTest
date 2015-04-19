@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CalcTest</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="calcTab">Calc</string>
+    <string name="graphTab">Graph</string>
+
+</resources>
