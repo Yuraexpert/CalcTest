@@ -26,13 +26,21 @@ public class MyOnKeyboardActionListener  implements KeyboardView.OnKeyboardActio
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-        long eventTime = System.currentTimeMillis();
-        KeyEvent event = new KeyEvent(eventTime, eventTime,
-                KeyEvent.ACTION_DOWN, primaryCode, 0, 0, 0, 0,
-                KeyEvent.FLAG_SOFT_KEYBOARD | KeyEvent.FLAG_KEEP_TOUCH_MODE);
-
         TextView v  = (TextView)mTargetActivity.findViewById(R.id.calc_text);
-        v.append(String.valueOf(primaryCode));
+        //v.append(String.valueOf(primaryCode));
+        switch (primaryCode) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 0: v.append(String.valueOf(primaryCode));
+                break;
+        }
     }
 
     @Override

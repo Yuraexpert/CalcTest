@@ -26,6 +26,7 @@ public class CalcFragment extends Fragment {
     private Keyboard mKeyboard;
     private Button hideButton;
     private LinearLayout calcContainer;
+    private TextView calcTextView;
 
     public CalcFragment() {
         // Required empty public constructor
@@ -42,7 +43,7 @@ public class CalcFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View calcView = inflater.inflate(R.layout.calc_layout, container, false);
-
+        calcTextView = (TextView)getActivity().findViewById(R.id.calc_text);
         mKeyboard = new Keyboard(getActivity(), R.xml.keyboard);
 
         mKeyboardView = (MyKeyboard)calcView.findViewById(R.id.keyboard_view);
@@ -75,16 +76,7 @@ public class CalcFragment extends Fragment {
                     v.setLayoutParams(params); //causes layout update
                 } else {
                     calcContainer.animate().translationY(calcContainer.getHeight())
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            calcContainer.setVisibility(View.GONE);
-                        }
-                    });
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)v.getLayoutParams();
-                    params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-                    v.setLayoutParams(params); //causes layout update
+                    .setListener(new MyAnimationListener(calcContainer, v));
                 }
 
             }
