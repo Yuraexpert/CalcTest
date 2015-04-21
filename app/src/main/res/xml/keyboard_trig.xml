@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+	android:keyWidth="11%p" android:horizontalGap="4px"
+	android:verticalGap="4px" android:keyHeight="9%p">
+
+	<Row>
+		<Key android:codes="10" android:keyLabel="Pi" android:keyEdgeFlags="left" />
+		<Key android:codes="11" android:keyLabel="e" />
+		<Key android:codes="21" android:keyLabel="X" />
+		<Key android:codes="20" android:keyLabel="%" android:keyEdgeFlags="right" />
+	</Row>
+
+	<Row>
+		<Key android:codes="12" android:keyLabel="sin" android:keyEdgeFlags="left" />
+		<Key android:codes="15" android:keyLabel="asin" />
+		<Key android:codes="5" android:keyLabel="|X|" />
+		<Key android:codes="22" android:keyLabel="X^Y" android:keyEdgeFlags="right" />
+	</Row>
+
+	<Row>
+		<Key android:codes="13" android:keyLabel="cos" android:keyEdgeFlags="left" />
+		<Key android:codes="16" android:keyLabel="acos" />
+		<Key android:codes="25" android:keyLabel="log" />
+		<Key android:codes="23" android:keyLabel="√" android:keyEdgeFlags="right" />
+	</Row>
+
+	<Row>
+		<Key android:codes="14" android:keyLabel="tan" android:keyEdgeFlags="left" />
+        <Key android:codes="17" android:keyLabel="atan" />
+        <Key android:codes="24" android:keyLabel="ln" />
+        <Key android:codes="34" android:keyLabel="1/x" android:keyEdgeFlags="right" />
+	</Row>
+
+</Keyboard>

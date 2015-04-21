@@ -40,6 +40,81 @@ public class MyOnKeyboardActionListener  implements KeyboardView.OnKeyboardActio
             case 9:
             case 0: v.append(String.valueOf(primaryCode));
                 break;
+            case 10:
+                v.append("Pi");
+                break;
+            case 11:
+                v.append("e");
+                break;
+            case 12:
+                v.append("sin(");
+                break;
+            case 13:
+                v.append("cos(");
+                break;
+            case 14:
+                v.append("tan(");
+                break;
+            case 15:
+                v.append("arcsin(");
+                break;
+            case 16:
+                v.append("arccos(");
+                break;
+            case 17:
+                v.append("arctan(");
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            case 20:
+                v.append("%");
+                break;
+            case 21:
+                v.append("X");
+                break;
+            case 22:
+                v.append("^");
+                break;
+            case 23:
+                v.append("√");
+                break;
+            case 24:
+                v.append("ln");
+                break;
+            case 25:
+                v.append("log");
+                break;
+            case 26:
+                v.append("*");
+                break;
+            case 27:
+                v.append("+");
+                break;
+            case 28:
+                v.append("-");
+                break;
+            case 29:
+                v.append("/");
+                break;
+            case 30:
+                v.append("(");
+                break;
+            case 31:
+                v.append(")");
+                break;
+            case 32:
+                v.append("=");
+                break;
+            case 33:
+                String text = v.getText().toString();
+                v.setText(text.substring(0, text.length()-1));
+                break;
+            case 34:
+                break;
+            default:
+                break;
         }
     }
 

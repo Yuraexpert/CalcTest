@@ -23,7 +23,10 @@ import android.widget.TextView;
 public class CalcFragment extends Fragment {
     private MyKeyboard mKeyboardView;
     private MyKeyboard mKeyboardView2;
+    private MyKeyboard mKeyboardView3;
     private Keyboard mKeyboard;
+    private Keyboard mKeyboard2;
+    private Keyboard mKeyboard3;
     private Button hideButton;
     private LinearLayout calcContainer;
     private TextView calcTextView;
@@ -44,16 +47,22 @@ public class CalcFragment extends Fragment {
                              Bundle savedInstanceState) {
         View calcView = inflater.inflate(R.layout.calc_layout, container, false);
         calcTextView = (TextView)getActivity().findViewById(R.id.calc_text);
-        mKeyboard = new Keyboard(getActivity(), R.xml.keyboard);
+        mKeyboard = new Keyboard(getActivity(), R.xml.keyboard_numbers);
+        mKeyboard2 = new Keyboard(getActivity(), R.xml.keyboard_operands);
+        mKeyboard3 = new Keyboard(getActivity(), R.xml.keyboard_trig);
 
         mKeyboardView = (MyKeyboard)calcView.findViewById(R.id.keyboard_view);
         mKeyboardView2 = (MyKeyboard)calcView.findViewById(R.id.keyboard_view2);
+        mKeyboardView3 = (MyKeyboard)calcView.findViewById(R.id.keyboard_view3);
 
         mKeyboardView.setKeyboard(mKeyboard);
         mKeyboardView.setOnKeyboardActionListener(new MyOnKeyboardActionListener(getActivity()));
 
-        mKeyboardView2.setKeyboard(mKeyboard);
+        mKeyboardView2.setKeyboard(mKeyboard2);
         mKeyboardView2.setOnKeyboardActionListener(new MyOnKeyboardActionListener(getActivity()));
+
+        mKeyboardView3.setKeyboard(mKeyboard3);
+        mKeyboardView3.setOnKeyboardActionListener(new MyOnKeyboardActionListener(getActivity()));
 
         hideButton = (Button)calcView.findViewById(R.id.hide_calc_button);
         calcContainer = (LinearLayout)calcView.findViewById(R.id.keyboard_container);

@@ -19,4 +19,11 @@
         <item name="android:keyPreviewHeight">0dp</item>
     </style>
 
+    <style name="myKeyboardStyleTrig">
+        <item name="android:keyTextColor">#fffcf5fc</item>
+        <item name="android:keyBackground">@drawable/trigonometri_buttons</item>
+        <item name="android:keyPreviewLayout">@layout/keyboard_preview</item>
+        <item name="android:keyPreviewHeight">0dp</item>
+    </style>
+
 </resources>
