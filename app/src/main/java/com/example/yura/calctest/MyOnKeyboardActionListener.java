@@ -9,10 +9,10 @@ import android.widget.TextView;
  * Created by Yura on 18.04.2015.
  */
 public class MyOnKeyboardActionListener  implements KeyboardView.OnKeyboardActionListener {
-    private Activity mTargetActivity;
+    private MainActivity mTargetActivity;
 
     public MyOnKeyboardActionListener(Activity targetActivity) {
-        this.mTargetActivity = targetActivity;
+        this.mTargetActivity = (MainActivity)targetActivity;
     }
     @Override
     public void onPress(int primaryCode) {
@@ -112,6 +112,9 @@ public class MyOnKeyboardActionListener  implements KeyboardView.OnKeyboardActio
                 v.setText(text.substring(0, text.length()-1));
                 break;
             case 34:
+                v.append(".");
+            case 35:
+                mTargetActivity.calcField();
                 break;
             default:
                 break;

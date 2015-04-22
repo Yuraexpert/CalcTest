@@ -30,6 +30,7 @@ public class CalcFragment extends Fragment {
     private Button hideButton;
     private LinearLayout calcContainer;
     private TextView calcTextView;
+    View calcView;
 
     public CalcFragment() {
         // Required empty public constructor
@@ -45,8 +46,48 @@ public class CalcFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View calcView = inflater.inflate(R.layout.calc_layout, container, false);
-        calcTextView = (TextView)getActivity().findViewById(R.id.calc_text);
+        calcView = inflater.inflate(R.layout.calc_layout, container, false);
+        calcTextView = (TextView)calcView.findViewById(R.id.calc_text);
+
+        hideButton = (Button)calcView.findViewById(R.id.hide_calc_button);
+        calcContainer = (LinearLayout)calcView.findViewById(R.id.keyboard_container);
+        setKeyboard();
+        setHideButton();
+        return calcView;
+    }
+
+    public void ClearFields(View v) {
+        calcTextView.setText("");
+    }
+
+    private void setHideButton() {
+        hideButton.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+            @Override
+            public void onClick(View v) {
+                if (calcContainer.getVisibility() == View.GONE) {
+                    calcContainer.setVisibility(View.VISIBLE);
+                    calcContainer.animate().setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            super.onAnimationStart(animation);
+                            calcContainer.setVisibility(View.VISIBLE);
+                        }
+                    })
+                            .translationY(0);
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)v.getLayoutParams();
+                    params.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+                    v.setLayoutParams(params); //causes layout update
+                } else {
+                    calcContainer.animate().translationY(calcContainer.getHeight())
+                            .setListener(new MyAnimationListener(calcContainer, v));
+                }
+
+            }
+        });
+    }
+
+    private void setKeyboard() {
         mKeyboard = new Keyboard(getActivity(), R.xml.keyboard_numbers);
         mKeyboard2 = new Keyboard(getActivity(), R.xml.keyboard_operands);
         mKeyboard3 = new Keyboard(getActivity(), R.xml.keyboard_trig);
@@ -63,36 +104,7 @@ public class CalcFragment extends Fragment {
 
         mKeyboardView3.setKeyboard(mKeyboard3);
         mKeyboardView3.setOnKeyboardActionListener(new MyOnKeyboardActionListener(getActivity()));
-
-        hideButton = (Button)calcView.findViewById(R.id.hide_calc_button);
-        calcContainer = (LinearLayout)calcView.findViewById(R.id.keyboard_container);
-        hideButton.setOnClickListener(new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-            @Override
-            public void onClick(View v) {
-                if (calcContainer.getVisibility() == View.GONE) {
-                    calcContainer.setVisibility(View.VISIBLE);
-                    calcContainer.animate().setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
-                            super.onAnimationStart(animation);
-                            calcContainer.setVisibility(View.VISIBLE);
-                        }
-                    })
-                    .translationY(0);
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)v.getLayoutParams();
-                    params.removeRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-                    v.setLayoutParams(params); //causes layout update
-                } else {
-                    calcContainer.animate().translationY(calcContainer.getHeight())
-                    .setListener(new MyAnimationListener(calcContainer, v));
-                }
-
-            }
-        });
-        return calcView;
     }
-
 
 
 }

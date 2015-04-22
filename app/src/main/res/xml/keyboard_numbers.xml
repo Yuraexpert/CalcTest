@@ -22,8 +22,9 @@
 	</Row>
 
 	<Row>
-        <Key android:codes="0" android:keyLabel="0" android:keyEdgeFlags="left" android:keyWidth="22%p" />
-        <Key android:codes="34" android:keyLabel="." android:keyEdgeFlags="right" />
+        <Key android:codes="0" android:keyLabel="0" android:keyEdgeFlags="left" android:keyWidth="11%p" />
+        <Key android:codes="34" android:keyLabel="."/>
+        <Key android:codes="35" android:keyLabel="=" android:keyEdgeFlags="right"></Key>
 	</Row>
 
 </Keyboard>

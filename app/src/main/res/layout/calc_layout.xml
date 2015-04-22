@@ -14,23 +14,24 @@
             android:paddingTop="20sp"
             android:paddingRight="50sp"
             android:background="@drawable/textviewback"
-            android:text="Hello" />
+            android:text="" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="54dip"
             android:layout_alignParentRight="true"
             android:text="C"
-            android:background="@drawable/operands_buttons" />
+            android:background="@drawable/operands_buttons"
+            android:onClick="ClearFields"/>
 
 
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/calc_results"
         android:layout_height="match_parent"
         android:layout_below="@id/calc_text"
-        android:text="Im here"
+        android:elegantTextHeight="true"
         android:background="@color/background_floating_material_light"
-        android:gravity="center_horizontal"
         />
 
 

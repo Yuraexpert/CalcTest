@@ -7,13 +7,20 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends Activity {
     ActionBar.Tab calcTab, funcTab;
     CalcFragment calcFragment = new CalcFragment();
     FuncFragment funcFragment = new FuncFragment();
+    TextView calcResField;
+    String formula;
+    Notation notation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,8 @@ public class MainActivity extends Activity {
             int index = savedInstanceState.getInt("TabIndex");
             actionBar.setSelectedNavigationItem(index);
         }
+        notation = new Notation();
+
     }
 
 
@@ -69,5 +78,36 @@ public class MainActivity extends Activity {
         int i = getActionBar().getSelectedNavigationIndex();
         outState.putInt("TabIndex", i);
 
+    }
+
+    public void ClearFields(View v) {
+        calcFragment.ClearFields(v);
+    }
+    public void calcField() {
+        calcResField = (TextView)findViewById(R.id.calc_results);
+        TextView textV = (TextView)findViewById(R.id.calc_text);
+        String text = textV.getText().toString();
+        setFormula(text);
+        prepareFormula();
+        notation.setFunc(formula);
+        double res = notation.calc(0);
+        text+=" = ";
+        text+=String.valueOf(res);
+        text+="\n";
+        calcResField.append(text);
+    }
+
+    private void prepareFormula() {
+        String updated = this.formula.replaceAll("arcsin", "a");
+        updated = updated.replaceAll("arccos", "b");
+        updated = updated.replaceAll("arctan", "v");
+        updated = updated.replaceAll("sin", "s");
+        updated = updated.replaceAll("cos", "c");
+        updated = updated.replaceAll("tan", "t");
+        setFormula(updated);
+    }
+
+    public void setFormula(String text) {
+        this.formula = text;
     }
 }
